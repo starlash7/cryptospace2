@@ -6,13 +6,16 @@ import styled from "@emotion/styled";
 import Button from "@mui/material/Button";
 import { Title } from "../components/Title";
 import { MenuView } from "../components/MenuView";
-
+import Link from "next/link";
 const Home: NextPage = () => {
   return (
     <MainView>
       <MenuView>
         <Title>CRYPTO SPACE</Title>
-        <MenuButton variant="outlined" size="large">Minting your Own Planet</MenuButton>
+
+        <Link href="/mint">
+          <MenuButton variant="outlined" size="large">Minting your Own Planet</MenuButton>
+        </Link>
         <MenuButton variant="outlined" size="large">View All Planets</MenuButton>
       </MenuView>
     </MainView>
