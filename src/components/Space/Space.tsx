@@ -2,7 +2,7 @@ import { Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { CanvasHTMLAttributes, useContext } from "react";
 import dynamic from "next/dynamic";
-import { SpaceContext } from "../../../context/useSpace";
+import { SpaceContext } from "../../context/useSpace";
 
 const Stars = dynamic(() => import('@react-three/drei').then(mod => mod.Stars), {
     ssr: false,

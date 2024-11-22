@@ -2,8 +2,8 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import styled from '@emotion/styled';
 import { Space } from '../components';
-import { SpaceContextProvider } from '../../context/useSpace';
-import { Web3ContextProvider } from '../../context/useWeb3';
+import { SpaceContextProvider } from '../context/useSpace';
+import { Web3ContextProvider } from '../context/useWeb3';
 
 //Component: index나 list 꾸며주는 컴포넌트
 function MyApp({ Component, pageProps }: AppProps) {

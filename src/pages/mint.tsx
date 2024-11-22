@@ -5,7 +5,7 @@ import { MenuView } from "../components/MenuView";
 import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
 import dynamic from 'next/dynamic';
-import { SpaceContext } from "../../context/useSpace";
+import { SpaceContext } from "../context/useSpace";
 import { useRouter } from "next/router";
 const PlanetList = dynamic(() => import('../components/Planet/Planet').then(mod => mod.PlanetList), {
     ssr: false
