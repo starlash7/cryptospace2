@@ -4,9 +4,13 @@ import { Title } from "../components/Title";
 import { MenuView } from "../components/MenuView";
 import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
-import { PlanetList } from "@/components/Planet/Planet";
+import dynamic from 'next/dynamic';
 import { SpaceContext } from "../../context/useSpace";
 import { useRouter } from "next/router";
+const PlanetList = dynamic(() => import('../components/Planet/Planet').then(mod => mod.PlanetList), {
+    ssr: false
+});
+
 const Mint: NextPage = () => {
     const router = useRouter();
     const { showPlanet, clearPlanet } = useContext(SpaceContext);
@@ -24,7 +28,6 @@ const Mint: NextPage = () => {
     }, [planetIndex, showPlanet, clearPlanet]);
 
     useEffect(() => {
-        setInterval(() => showRandomPlanet(), 1000);
         const interval = setInterval(() => showRandomPlanet(), 1000);
         showRandomPlanet();
 
