@@ -7,6 +7,10 @@ import styled from "@emotion/styled";
 import dynamic from 'next/dynamic';
 import { SpaceContext } from "../context/useSpace";
 import { useRouter } from "next/router";
+import { Web3Context } from "../context/useWeb3";
+import { usePlanetContract } from "../hooks/usePlanetContract";
+
+
 const PlanetList = dynamic(() => import('../components/Planet/Planet').then(mod => mod.PlanetList), {
     ssr: false
 });
@@ -15,6 +19,19 @@ const Mint: NextPage = () => {
     const router = useRouter();
     const { showPlanet, clearPlanet } = useContext(SpaceContext);
     const [planetIndex, setPlanetIndex] = useState(-1);
+    const { web3 } = useContext(Web3Context);
+    const { mintPlanet } = usePlanetContract(web3);
+
+    const mint = async () => {
+        if (!web3) {
+            return;
+        }
+        const accounts = await web3.eth.requestAccounts();
+        const currentAccount = accounts[0];
+
+        console.log(currentAccount);
+    };
+
 
     const showRandomPlanet = () => {
         setPlanetIndex(Math.floor(Math.random() * PlanetList.length));
@@ -44,7 +61,7 @@ const Mint: NextPage = () => {
                 </Description>
 
                 <ButtonView>
-                    <MenuButton variant="contained" size="large">
+                    <MenuButton variant="contained" size="large" onClick={() => mint()}>
                         Mint Planet
                     </MenuButton>
 

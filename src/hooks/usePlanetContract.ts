@@ -558,7 +558,7 @@ const contractAbi = [
   },
 ];
 
-export const usePlanetContracts = (web3: Web3 | null) => {
+export const usePlanetContract = (web3: Web3 | null) => {
   const createErrorHandler = (operation: string) => () => {
     throw new Error(`Cannot ${operation}: 지갑이 설치되지 않았습니다`);
   };
